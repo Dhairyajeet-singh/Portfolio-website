@@ -45,6 +45,13 @@ import kvc from "./company/kvc.png";
 import carrent from "./carrent.png";
 import jobit from "./jobit.png";
 import tripguide from "./tripguide.png";
+import talkready from "./talkready.png";
+import nimbus from "./nimbus.png";
+import text3d from "./text3d.png";
+
+import mm from "./mm.png";
+import ak from "./ak.png";
+import mk from "./mk.png";
 
 export {
   logo,
@@ -91,4 +98,10 @@ export {
   flask,
   opencv,
   fastapi,
+  text3d,
+  nimbus,
+  talkready,
+  mm,
+  ak,
+  mk,
 };

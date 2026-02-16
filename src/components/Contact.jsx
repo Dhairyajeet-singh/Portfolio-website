@@ -27,9 +27,63 @@ const Contact = () => {
     });
   };
 
+  // Rate limiting check using localStorage
+  const checkRateLimit = () => {
+    const lastSubmit = localStorage.getItem('lastEmailSubmit');
+    const COOLDOWN_PERIOD = 60000; // 60 seconds (adjust as needed)
+    
+    if (lastSubmit) {
+      const timeSinceLastSubmit = Date.now() - parseInt(lastSubmit);
+      if (timeSinceLastSubmit < COOLDOWN_PERIOD) {
+        return {
+          allowed: false,
+          remainingTime: Math.ceil((COOLDOWN_PERIOD - timeSinceLastSubmit) / 1000)
+        };
+      }
+    }
+    
+    return { allowed: true };
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    // Validation: Check if all fields are filled
+    if (!form.name.trim() || !form.email.trim() || !form.message.trim()) {
+      alert("Please fill in all fields.");
+      return;
+    }
+
+    // Validation: Check name length
+    if (form.name.trim().length < 2) {
+      alert("Please enter a valid name (at least 2 characters).");
+      return;
+    }
+
+    // Validation: Check email format
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(form.email)) {
+      alert("Please enter a valid email address.");
+      return;
+    }
+
+    // Validation: Check message length
+    if (form.message.trim().length < 10) {
+      alert("Please enter a message with at least 10 characters.");
+      return;
+    }
+
+    // Rate limiting check
+    const rateLimit = checkRateLimit();
+    if (!rateLimit.allowed) {
+      alert(`Please wait ${rateLimit.remainingTime} seconds before sending another message.`);
+      return;
+    }
+
     setLoading(true);
+
+    // Store current timestamp for rate limiting
+    localStorage.setItem('lastEmailSubmit', Date.now().toString());
 
     emailjs
       .send(

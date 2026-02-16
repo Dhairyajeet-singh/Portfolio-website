@@ -39,6 +39,12 @@ import {
   sql,
   flask,
   fastapi,
+  talkready,
+  text3d,
+  nimbus,
+  mm,
+  ak,
+  mk,
 } from "../assets";
 
 export const navLinks = [
@@ -184,93 +190,108 @@ const experiences = [
 const testimonials = [
   {
     testimonial:
-      "I thought it was impossible to make a website as beautiful as our product, but Rick proved me wrong.",
-    name: "Sara Lee",
-    designation: "CFO",
-    company: "Acme Co",
-    image: "https://randomuser.me/api/portraits/women/4.jpg",
+      "Through advanced model tuning and data optimization, Dhairyajeet improved our predictive accuracy by 25% while reducing processing time by almost 40%",
+    name: "Angad Khurana",
+    designation: "AI Consultant",
+    company: "D-Fine",
+    image: ak,
   },
   {
     testimonial:
-      "I've never met a web developer who truly cares about their clients' success like Rick does.",
-    name: "Chris Brown",
-    designation: "COO",
-    company: "DEF Corp",
-    image: "https://randomuser.me/api/portraits/men/5.jpg",
+      "Exceptional at taking complex requirements, and turning them into seamless, user-friendly applications.",
+    name: "Mannica Khurana",
+    designation: "Growth Manager",
+    company: "Zoca AI",
+    image: mk,
   },
   {
     testimonial:
-      "After Rick optimized our website, our traffic increased by 50%. We can't thank them enough!",
-    name: "Lisa Wang",
-    designation: "CTO",
-    company: "456 Enterprises",
-    image: "https://randomuser.me/api/portraits/women/6.jpg",
+      "Dhairyajeet combines deep technical knowledge in AI with a practical approach to DevOps, consistently delivering robust and scalable solutions.",
+    name: "Mudit Mangtani",
+    designation: "Manager",
+    company: "Knovon Consulting",
+    image: mm,
   },
 ];
 
 const projects = [
   {
-    name: "Car Rent",
+    name: "Text-To-3D tool",
     description:
-      "Web-based platform that allows users to search, book, and manage car rentals from various providers, providing a convenient and efficient solution for transportation needs.",
+      "A web-based text-to-3D generation system that transforms natural language descriptions into downloadable 3D models. Users can enter a text prompt and receive a downloadable .ply file containing the generated 3D model.",
     tags: [
       {
-        name: "react",
+        name: "LLM",
         color: "blue-text-gradient",
       },
       {
-        name: "mongodb",
+        name: "Huggingface",
         color: "green-text-gradient",
       },
       {
-        name: "tailwind",
+        name: "FastAPI",
         color: "pink-text-gradient",
       },
+      {
+        name: "Model Training",
+        color: "blue-text-gradient",
+      },
     ],
-    image: carrent,
-    source_code_link: "https://github.com/",
+    image: text3d,
+    source_code_link: "https://github.com/Dhairyajeet-singh/text-to-3d",
+    drive_link: "https://drive.google.com/drive/folders/1pjkX2UzNGBVwCxaF2SlgGvZub93OfVdI?usp=sharing",
   },
   {
-    name: "Job IT",
+    name: "Nimbus AI",
     description:
-      "Web application that enables users to search for job openings, view estimated salary ranges for positions, and locate available jobs based on their current location.",
+      "Nimbus-AI is an AI-powered competitive intelligence platform that autonomously crawls and analyzes publicly available data on market competitors to extract actionable insights. It benchmarks your competitors’ marketing strategies, funding patterns, investor relations, and business growth tactics, and then provides tailored recommendations to help your business surpass them.",
     tags: [
       {
-        name: "react",
+        name: "Flask",
         color: "blue-text-gradient",
       },
       {
-        name: "restapi",
+        name: "LLM",
         color: "green-text-gradient",
       },
       {
-        name: "scss",
+        name: "Langchain",
         color: "pink-text-gradient",
       },
+      {
+        name: "Beautiful Soup",
+        color: "blue-text-gradient",
+      },
     ],
-    image: jobit,
-    source_code_link: "https://github.com/",
+    image: nimbus,
+    source_code_link: "https://github.com/Dhairyajeet-singh/Nimbus-AI",
+    drive_link: "https://drive.google.com/drive/folders/1-BNJpf-yEpE2A6daCz9BtBoMrtDuxT_G?usp=sharing",
   },
   {
-    name: "Trip Guide",
+    name: "TalkReady",
     description:
-      "A comprehensive travel booking platform that allows users to book flights, hotels, and rental cars, and offers curated recommendations for popular destinations.",
+      "TalkReady brings structure, fairness, and expert-designed intelligence to early-stage hiring, helping organisations replace guesswork with confident decisions. It is an AI driven hiring platform to assist HR in interview process. Developed a real time multi checks and active proctoring system, which outclasses paid proctoring systems.",
     tags: [
       {
-        name: "nextjs",
+        name: "Computer Vision",
         color: "blue-text-gradient",
       },
       {
-        name: "supabase",
+        name: "Voice Recognition",
         color: "green-text-gradient",
       },
       {
-        name: "css",
+        name: "Ultralytics",
         color: "pink-text-gradient",
       },
+      {
+        name: "Deployment and CICD pipelines",
+        color: "blue-text-gradient",
+      },
     ],
-    image: tripguide,
+    image: talkready,
     source_code_link: "https://github.com/",
+    drive_link: "https://drive.google.com/drive/folders/18OZxy90W5wBD7fFaZHZi395Udu_CdzNv?usp=drive_link",
   },
 ];
 
