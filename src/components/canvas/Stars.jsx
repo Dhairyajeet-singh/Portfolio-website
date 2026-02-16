@@ -1,4 +1,4 @@
-import { useState, useRef, Suspense } from "react";
+import { useState, useRef, Suspense, useEffect } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Points, PointMaterial, Preload } from "@react-three/drei";
 import * as random from "maath/random/dist/maath-random.esm";
@@ -28,6 +28,35 @@ const Stars = (props) => {
 };
 
 const StarsCanvas = () => {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(max-width: 768px)");
+    setIsMobile(mediaQuery.matches);
+
+    const handleMediaQueryChange = (event) => {
+      setIsMobile(event.matches);
+    };
+
+    mediaQuery.addEventListener("change", handleMediaQueryChange);
+
+    return () => {
+      mediaQuery.removeEventListener("change", handleMediaQueryChange);
+    };
+  }, []);
+
+  if (isMobile) {
+    // Simple CSS gradient background for mobile instead of 3D stars
+    return (
+      <div 
+        className='w-full h-auto absolute inset-0 z-[-1]'
+        style={{
+          background: 'radial-gradient(circle at 20% 50%, rgba(242, 114, 200, 0.1) 0%, transparent 50%), radial-gradient(circle at 80% 80%, rgba(242, 114, 200, 0.08) 0%, transparent 50%)',
+        }}
+      />
+    );
+  }
+
   return (
     <div className='w-full h-auto absolute inset-0 z-[-1]'>
       <Canvas camera={{ position: [0, 0, 1] }}>

@@ -1,4 +1,4 @@
-import React, { Suspense } from "react";
+import React, { Suspense, useEffect, useState } from "react";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, Preload, useGLTF } from "@react-three/drei";
 
@@ -13,6 +13,39 @@ const Earth = () => {
 };
 
 const EarthCanvas = () => {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(max-width: 768px)");
+    setIsMobile(mediaQuery.matches);
+
+    const handleMediaQueryChange = (event) => {
+      setIsMobile(event.matches);
+    };
+
+    mediaQuery.addEventListener("change", handleMediaQueryChange);
+
+    return () => {
+      mediaQuery.removeEventListener("change", handleMediaQueryChange);
+    };
+  }, []);
+
+  if (isMobile) {
+    return (
+      <div className="w-full h-full flex items-center justify-center">
+        <img
+          src="./planet/thumbnail.png"
+          alt="Earth"
+          className="w-full h-full object-contain"
+          onError={(e) => {
+            e.target.style.display = 'none';
+            e.target.parentElement.innerHTML = '<div class="text-white text-center p-4"><div class="text-6xl mb-2">🌍</div><p class="text-sm text-secondary">Interactive Earth model</p></div>';
+          }}
+        />
+      </div>
+    );
+  }
+
   return (
     <Canvas
       shadows

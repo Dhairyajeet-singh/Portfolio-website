@@ -1,4 +1,4 @@
-import React, { Suspense } from "react";
+import React, { Suspense, useEffect, useState } from "react";
 import { Canvas } from "@react-three/fiber";
 import {
   Decal,
@@ -38,6 +38,35 @@ const Ball = (props) => {
 };
 
 const BallCanvas = ({ icon }) => {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(max-width: 768px)");
+    setIsMobile(mediaQuery.matches);
+
+    const handleMediaQueryChange = (event) => {
+      setIsMobile(event.matches);
+    };
+
+    mediaQuery.addEventListener("change", handleMediaQueryChange);
+
+    return () => {
+      mediaQuery.removeEventListener("change", handleMediaQueryChange);
+    };
+  }, []);
+
+  if (isMobile) {
+    return (
+      <div className="w-full h-full flex items-center justify-center">
+        <img
+          src={icon}
+          alt="Technology icon"
+          className="w-16 h-16 object-contain"
+        />
+      </div>
+    );
+  }
+
   return (
     <Canvas
       frameloop='demand'

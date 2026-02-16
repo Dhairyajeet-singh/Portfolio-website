@@ -53,6 +53,23 @@ const ComputersCanvas = () => {
     };
   }, []);
 
+  if (isMobile) {
+    return (
+      <div className="w-full h-screen flex items-center justify-center bg-primary">
+        <img
+          src="./desktop_pc/thumbnail.png" // Removed leading slash
+          alt="Desktop PC"
+          className="w-[80%] max-w-[400px] object-contain"
+          onError={(e) => {
+            // Fallback if image doesn't exist
+            e.target.style.display = 'none';
+            e.target.parentElement.innerHTML = '<div class="text-white text-center"><p>3D Model Preview</p><p class="text-sm text-secondary">View on desktop for interactive experience</p></div>';
+          }}
+        />
+      </div>
+    );
+  }
+
   return (
     <Canvas
       frameloop='demand'
